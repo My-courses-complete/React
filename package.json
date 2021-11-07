@@ -1,6 +1,6 @@
 {
   "name": "react-introduction",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,5 +13,17 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.0"
-  }
+  },
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Platzi-courses-completed/React.git"
+  },
+  "author": "Jesus Mejia <chucho4720013@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Platzi-courses-completed/React/issues"
+  },
+  "homepage": "https://github.com/Platzi-courses-completed/React#readme",
+  "description": ""
 }
