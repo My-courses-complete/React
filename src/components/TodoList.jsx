@@ -1,7 +1,7 @@
 import React from "react";
+import '../styles/TodoList.css';
 
 function TodoList(props) {
-  console.log(props.children)
   return <section>{props.children}</section>;
 }
 
