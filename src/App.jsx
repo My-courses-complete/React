@@ -1,4 +1,3 @@
-
 // import "./App.css";
 import { TodoCounter } from "./components/TodoCounter.jsx";
 import { TodoSearch } from "./components/TodoSearch.jsx";
@@ -7,18 +6,28 @@ import { TodoItem } from "./components/TodoItem.jsx";
 import { CreateTodoButton } from "./components/CreateTodoButton.jsx";
 import React from "react";
 
-function App() {
-  const localStorageTodos = localStorage.getItem("TODOS");
-  let parsedTodos
+function useLocalStorage(itemName, initialValue) {
+  const localStorageItem = localStorage.getItem(itemName);
+  let parsedItem;
 
-  if(!localStorageTodos) {
-    localStorage.setItem("TODOS", JSON.stringify([]));
-    parsedTodos = []
+  if (!localStorageItem) {
+    localStorage.setItem("TODOS", JSON.stringify(initialValue));
+    parsedItem = initialValue;
   } else {
-    parsedTodos = JSON.parse(localStorageTodos)
+    parsedItem = JSON.parse(localStorageItem);
   }
+  const [item, setItem] = React.useState(parsedItem);
 
-  const [todos, setTodos] = React.useState(parsedTodos);
+  const saveItem = (newItem) => {
+    localStorage.setItem(itemName, JSON.stringify(newItem));
+    setItem(newItem);
+  };
+
+  return [item, saveItem];
+}
+
+function App() {
+  const [todos, saveTodos] = useLocalStorage("TODOS", []);
   const [searchValue, setSearchValue] = React.useState("");
 
   const completedTodos = todos.filter((todo) => todo.completed).length;
@@ -32,11 +41,6 @@ function App() {
     const regex = new RegExp(searchValue, "gi");
     searchedTodos = todos.filter((todo) => todo.text.match(regex)) || [];
   }
-
-  const saveTodos = (newTodos) => {
-    localStorage.setItem("TODOS", JSON.stringify(newTodos));
-    setTodos(newTodos);
-  };
 
   const completeTodo = (text) => {
     const newTodos = [...todos];
