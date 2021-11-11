@@ -43,6 +43,7 @@ export function TodoContextProvider(props) {
     totalTodos,
     searchValue,
     searchedTodos,
+    completedTodos,
     setSearchValue,
     completeTodo,
     deleteTodo,
