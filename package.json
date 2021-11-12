@@ -1,10 +1,13 @@
 {
   "name": "react-introduction",
   "version": "1.0.0",
+  "private": "true",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^17.0.0",
@@ -13,7 +16,8 @@
     "vite": "^2.6.13"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^1.0.0"
+    "@vitejs/plugin-react": "^1.0.0",
+    "gh-pages": "^3.2.3"
   },
   "main": "vite.config.js",
   "repository": {
@@ -25,6 +29,6 @@
   "bugs": {
     "url": "https://github.com/Platzi-courses-completed/React/issues"
   },
-  "homepage": "https://github.com/Platzi-courses-completed/React#readme",
+  "homepage": "https://Platzi-courses-completed.github.io/React",
   "description": ""
 }
