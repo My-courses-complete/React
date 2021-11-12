@@ -1,5 +1,6 @@
 import React from "react";
 import { TodoContext } from "../context/TodoContext";
+import { GoCheck, GoX } from 'react-icons/go'
 import "../styles/TodoItem.css";
 
 function TodoItem({ completed, onComplete, onDelete, text }) {
@@ -9,7 +10,7 @@ function TodoItem({ completed, onComplete, onDelete, text }) {
         className={`Icon Icon-check ${completed && "Icon-check--active"}`}
         onClick={onComplete}
       >
-        √
+        <GoCheck/>
       </span>
       <p
         className={`TodoItem-p ${completed && "TodoItem-p--complete"}`}
@@ -17,7 +18,7 @@ function TodoItem({ completed, onComplete, onDelete, text }) {
       >
         {text}
       </p>
-      <span className="Icon Icon-delete" onClick={onDelete}>X</span>
+      <span className="Icon Icon-delete" onClick={onDelete}><GoX/></span>
     </li>
   );
 }
