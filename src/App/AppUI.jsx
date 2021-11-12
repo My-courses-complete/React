@@ -31,7 +31,7 @@ function AppUI() {
         {error && <TodoError error={error} />}
         {loading && <TodoLoading />}
         {!loading && !searchedTodos.length && <EmptyTodo/>}
-        {searchedTodos.map((todo, index) => (
+        {!loading && searchedTodos.map((todo, index) => (
           <TodoItem
             key={index}
             text={todo.text}
