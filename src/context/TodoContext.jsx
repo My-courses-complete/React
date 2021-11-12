@@ -4,7 +4,7 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 export const TodoContext = React.createContext();
 
 export function TodoContextProvider(props) {
-  const {item: todos, saveItem: saveTodos, loading, error} = useLocalStorage("TODOS", []);
+  const {item: todos, saveItem: saveTodos, loading, error} = useLocalStorage("TODOS", JSON.parse(localStorage.getItem("TODOS")) || []);
   const [searchValue, setSearchValue] = React.useState("");
   const [openModal, setOpenModal] = React.useState(false);
 
@@ -19,6 +19,15 @@ export function TodoContextProvider(props) {
     const regex = new RegExp(searchValue, "gi");
     searchedTodos = todos.filter((todo) => todo.text.match(regex)) || [];
   }
+
+  const addTodo = (text) => {
+    const newTodos = [...todos];
+    newTodos.push({
+      completed: false,
+      text
+    })
+    saveTodos(newTodos);
+  };
 
   const completeTodo = (text) => {
     const newTodos = [...todos];
@@ -49,7 +58,8 @@ export function TodoContextProvider(props) {
     completeTodo,
     deleteTodo,
     openModal,
-    setOpenModal
+    setOpenModal,
+    addTodo
   }}>
     {props.children}
   </TodoContext.Provider>;

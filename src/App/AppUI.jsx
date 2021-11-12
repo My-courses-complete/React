@@ -6,6 +6,7 @@ import { TodoItem } from "../components/TodoItem.jsx";
 import { CreateTodoButton } from "../components/CreateTodoButton.jsx";
 import { TodoContext } from "../context/TodoContext.jsx";
 import { Modal } from "../components/Modal.jsx";
+import TodoForm from "../components/TodoForm.jsx";
 
 function AppUI() {
   const {
@@ -43,9 +44,9 @@ function AppUI() {
         ))}
       </TodoList>
 
-      {!openModal && (
+      {openModal && (
         <Modal>
-          <p>Un texto</p>
+          <TodoForm />
         </Modal>
       )}
       <CreateTodoButton />
