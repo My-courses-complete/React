@@ -2,6 +2,7 @@
   "name": "react-introduction",
   "version": "1.0.0",
   "private": "true",
+  "root": "./dist",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -30,5 +31,8 @@
     "url": "https://github.com/Platzi-courses-completed/React/issues"
   },
   "homepage": "https://Platzi-courses-completed.github.io/React",
-  "description": ""
+  "description": "",
+  "engines": {
+    "node": "16.x"
+  }
 }
