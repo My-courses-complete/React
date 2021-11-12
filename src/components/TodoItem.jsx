@@ -2,8 +2,7 @@ import React from "react";
 import { TodoContext } from "../context/TodoContext";
 import "../styles/TodoItem.css";
 
-function TodoItem() {
-  const { completed, onComplete, onDelete, text } = React.useContext(TodoContext)
+function TodoItem({ completed, onComplete, onDelete, text }) {
   return (
     <li className="TodoItem">
       <span
