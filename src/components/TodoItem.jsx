@@ -1,5 +1,4 @@
 import React from "react";
-import { TodoContext } from "../context/TodoContext";
 import { GoCheck, GoX } from 'react-icons/go'
 import "../styles/TodoItem.css";
 
