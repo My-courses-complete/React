@@ -9,24 +9,34 @@ import { Modal } from "../components/Modal.jsx";
 import TodoForm from "../components/TodoForm.jsx";
 import { TodoLoading } from "../components/TodoLoading.jsx";
 import { EmptyTodo } from "../components/EmptyTodo.jsx";
+import TodoHeader from "../components/TodoHeader.jsx";
 
 function AppUI() {
   const {
     error,
     loading,
     totalTodos,
-    searchValue,
     searchedTodos,
-    setSearchValue,
     completeTodo,
     deleteTodo,
     openModal,
     setOpenModal,
+    completedTodos,
+    searchValue,
+    setSearchValue
   } = React.useContext(TodoContext);
   return (
     <>
-      <TodoCounter />
-      <TodoSearch />
+      <TodoHeader>
+        <TodoCounter 
+          totalTodos={totalTodos}
+          completedTodos={completedTodos}
+        />
+        <TodoSearch 
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
+      </TodoHeader>
       <TodoList>
         {error && <TodoError error={error} />}
         {loading && <TodoLoading />}
