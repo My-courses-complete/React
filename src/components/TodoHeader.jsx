@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function TodoHeader({children}) {
+export default function TodoHeader({loading, children}) {
 	return (
 		<header>
-			{children}
+			{React.Children.toArray(children)
+			.map(child => React.cloneElement(child, {loading}))}
 		</header>
 	)
 }
