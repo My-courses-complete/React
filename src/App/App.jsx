@@ -11,6 +11,7 @@ import TodoForm from "../components/TodoForm.jsx";
 import { TodoLoading } from "../components/TodoLoading.jsx";
 import { EmptyTodo } from "../components/EmptyTodo.jsx";
 import TodoHeader from "../components/TodoHeader.jsx";
+import { ChangeAlertWithStorageListener } from "../components/ChangeAlert.jsx";
 
 function App() {
   const {
@@ -94,6 +95,7 @@ function App() {
       openModal={openModal} 
       setOpenModal={setOpenModal}
       />
+      <ChangeAlertWithStorageListener />
     </>
   );
 }
