@@ -1,7 +1,7 @@
 import React from 'react'
 
-export function EmptyTodo() {
+export function EmptyTodo(props) {
   return (
-    <p>Crea la primer Todo</p>
+    <p>{props.msg}</p>
   )
 }
