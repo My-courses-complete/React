@@ -11,6 +11,7 @@ import TodoForm from "../components/TodoForm.jsx";
 import { TodoLoading } from "../components/TodoLoading.jsx";
 import { EmptyTodo } from "../components/EmptyTodo.jsx";
 import TodoHeader from "../components/TodoHeader.jsx";
+import { ChangeAlertWithStorageListener } from "../components/ChangeAlert.jsx";
 
 function App() {
   const {
@@ -25,22 +26,24 @@ function App() {
     setSearchValue,
     addTodo,
     openModal,
-    setOpenModal
+    setOpenModal,
+    sincronizeTodos
   } = useTodos();
 
   return (
     <>
+    <React.StrictMode>
       <TodoHeader loading={loading}>
         <TodoCounter 
           totalTodos={totalTodos}
           completedTodos={completedTodos}
           // loading={loading}
-        />
+          />
         <TodoSearch 
           searchValue={searchValue}
           setSearchValue={setSearchValue}
           // loading={loading}
-        />
+          />
       </TodoHeader>
       <TodoList 
         error={error}
@@ -54,31 +57,31 @@ function App() {
         onEmptySearchResults={(searchText) => <EmptyTodo msg={`No se encontraron resultados para ${searchText}`}/>}
         render={(todo, index) => (
           <TodoItem
-            key={index}
-            text={todo.text}
-            completed={todo.completed}
-            onComplete={() => {
-              completeTodo(todo.text);
-            }}
-            onDelete={() => {
-              deleteTodo(todo.text);
-            }}
+          key={index}
+          text={todo.text}
+          completed={todo.completed}
+          onComplete={() => {
+            completeTodo(todo.text);
+          }}
+          onDelete={() => {
+            deleteTodo(todo.text);
+          }}
           />
-        )}
-      >
+          )}
+          >
         {(todo, index) => (
           <TodoItem
-            key={index}
-            text={todo.text}
-            completed={todo.completed}
-            onComplete={() => {
-              completeTodo(todo.text);
-            }}
-            onDelete={() => {
-              deleteTodo(todo.text);
-            }}
+          key={index}
+          text={todo.text}
+          completed={todo.completed}
+          onComplete={() => {
+            completeTodo(todo.text);
+          }}
+          onDelete={() => {
+            deleteTodo(todo.text);
+          }}
           />
-        )}
+          )}
       </TodoList>
 
       {openModal && (
@@ -94,6 +97,10 @@ function App() {
       openModal={openModal} 
       setOpenModal={setOpenModal}
       />
+      <ChangeAlertWithStorageListener
+        sincronize={sincronizeTodos}
+      />
+    </React.StrictMode>
     </>
   );
 }
